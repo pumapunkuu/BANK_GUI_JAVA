@@ -1,4 +1,4 @@
-
+// Oo Em Gee
 public class user {
 	public String password;
 	public double Balance;
