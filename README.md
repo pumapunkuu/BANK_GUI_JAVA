@@ -1,4 +1,4 @@
-# BANK_GUI_JAVA
+# BANK_ATM_GUI_JAVA
 This is a bank interface application that you can withdraw,deposit or transfer amounts between users.
 File reading and writing processes were used.
 This project was created with https://github.com/galtonova.
