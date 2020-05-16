@@ -669,33 +669,33 @@ public class atm extends JFrame {
 		btnNewButton_6 = new JButton("Change the password");
 		btnNewButton_6.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				String old_pass_val = new String( old_password_field.getPassword() );//old_password_field metoduna gidip i�indeki bilgileri get ile �ekiyor
+				String old_pass_val = new String( old_password_field.getPassword() );
 				String new_pass_value = new String( new_password_field.getPassword() );
 				String password_Conf = new String( field_conf_new_pass.getPassword() );
 				
-				if( old_pass_val.equals(data_password) )//equals.data e�itlik ifadelerinde kullan�l�r
+				if( old_pass_val.equals(data_password) )
 				{
-					if( new_pass_value.equals( password_Conf ) && !new_pass_value.equals("") )//password onay yeni passwordye e�itse ve bosluk e�it de�il yeni �ifreyse ko�ulu saglanmas� �sten�yor
+					if( new_pass_value.equals( password_Conf ) && !new_pass_value.equals("") )
 					{
-						data_password = new_pass_value;//yukar�daki kosul saglan�rsa �lk s�frey� yen�s s�fre yap�yor
-						JOptionPane.showMessageDialog(null, "Password succesfully changed enter again", "Good", JOptionPane.INFORMATION_MESSAGE);//Missed veya basar�l� olma mesajlar� goster�lmes� �c�n
-						password_changer.setVisible(false);//burada da s�fre deg�st�rme ekran� setV�s�ble(false) komutuyla kapat�l�yor
-						password.setVisible(true);//burada ise password de�istigi icin bizden yeniden giris istenecegi icin set visible(true) komutuyla password ekran�na ge�iliyor
+						data_password = new_pass_value;
+						JOptionPane.showMessageDialog(null, "Password succesfully changed enter again", "Good", JOptionPane.INFORMATION_MESSAGE);
+						password_changer.setVisible(false);
+						password.setVisible(true);
 						writeTOFile();
 					}
 					
 					
 					else
 					{
-						JOptionPane.showMessageDialog(null, "New password not matching", "ERROR", JOptionPane.ERROR_MESSAGE);//new_pass_value.equals l� olan if yap�s�ndaki kosul saglanmazsa
-						old_password_field.setText("");//old_password_field alan�n� setText komutuyla bos hale get�r�yor 
-						new_password_field.setText("");//new_password_field alan�n� setText komutuyla bos hale get�r�yor 
-						field_conf_new_pass.setText("");//field_conf_new_pass alan�n� setText komutuyla bos hale get�r�yor 
+						JOptionPane.showMessageDialog(null, "New password not matching", "ERROR", JOptionPane.ERROR_MESSAGE);
+						old_password_field.setText("");
+						new_password_field.setText("");
+						field_conf_new_pass.setText(""); 
 					}
 				}
 				else
 				{
-					JOptionPane.showMessageDialog(null, "Old Password is Wrong", "ERROR", JOptionPane.ERROR_MESSAGE);//Buradaki else ise password degistirilirken eski passwordyi yanl�s g�rersek kontrol etmke icin
+					JOptionPane.showMessageDialog(null, "Old Password is Wrong", "ERROR", JOptionPane.ERROR_MESSAGE);
 					old_password_field.setText("");
 					new_password_field.setText("");
 					field_conf_new_pass.setText("");
