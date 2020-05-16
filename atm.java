@@ -721,10 +721,10 @@ public class atm extends JFrame {
 	
 	public void starting()
 	{
-		password.setVisible(true);//�lk ekran� true yaparak password ekran� geliyor kars�m�za
+		password.setVisible(true);
 	}
 	
-	private int user_ready()//Private kulland�k ��nk� bu bigiler kullan�c� ekran�nda gorunecek o yuzden once k� d�ger 2 ekran asamas�n� gecmes� gerek�yor kodun
+	private int user_ready()
 	{
 		
 		if( read_from_file() == 0 )
