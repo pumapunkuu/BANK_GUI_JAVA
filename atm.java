@@ -115,43 +115,58 @@ public class atm extends JFrame {
 	
 	public int read_from_file()
 	{
-		Arrays.fill(users, null);
+		Arrays.fill(users, null);//Fulling given array with zeros 
 		user_Number = 0;
 		try{
 
-	        File file = new File(__filename__);
-
+	        File file = new File(__filename__);//Existence test for the file
+					//Exist() must be return some boolen true or false
+					//In this case intention was creating a new file by controlling absence oF File
 	        if (!file.exists()) {
 	            //return 0;
-	        	file.createNewFile();
+	        	file.createNewFile();//Creates a new and empty file with identical pathname which is file
 	        }
 
-	        FileReader _Reader = new FileReader(file);
+	        FileReader _Reader = new FileReader(file);//New FileReader created to read given file
+							 //Its also assigned to reader
 
 	        BufferedReader _Reader2 = new BufferedReader(_Reader);
+			
 	        
-	        String row;
+	        String row;//We would be needing a variable to read the file lines by
+			//demonstrating row and it must be string because it would be holding 
+			//or storing string such as;username,password,banknumber etc.
 	        
 	        
 	        
 	        int i=0;
 	        int j=0;
 	        
-	        users[0] = new user();
+	        users[0] = new user();//When reading process is finished for the one user
+			//we need to pass to other one
 	        
-	        while ( true )
+	        while ( true )	//In this part reading process will be checked
+				//Idea is reading rows but how we would be correctly read them
+				//First thing we should be clear about  whether rows of the files are empty or
+				//if it is not we should be certain of that we have already read the row
+				//in this case we created two characters to check whether all informations for one user
+				//are read or not, by using '*' charakter we understand that user1's reading process was finished
+				//In our  code if the row was read as '*' program will get it that it should pass to other user
+				//And another character was used as '+'.When if condition realised that row equal to '+' then reading will be finished.
+
 	        {
 	        	
-	        	row = _Reader2.readLine();
+	        	row = _Reader2.readLine();//By doing this allowing row to  be read
 
-	        	if( row == null || row.equals("+") )
+	        	if( row == null || row.equals("+") )//Checking whether the condition is appropriate or not
 	        	{
 	        		break;
 	        	}
 	        	
 	        	
 	        	
-	        	if( row.equals("*")  )
+	        	if( row.equals("*")  )//If  row equals to '*' then 'i will be increased one and 
+					      //user2 becomes new user
 	        	{
 
 	        		i++;
@@ -160,19 +175,22 @@ public class atm extends JFrame {
 	        		users[i] = new user();
 	        		
 	        	}
-	        	else
+	        	else	//If  the  first if condition does not work out that means row is fulled with data
+				//And second if does not work out it means we should be still reading the value of the user
+				//because without seeing '*' that means reading still processing
 	        	{
 	        		if( j == 0 )
 	        		{
-	        			users[i].name_Surname = row;
+	        			users[i].name_Surname = row;//In this if we would be writing the name value of the user[i] to row
 	        		}
 	        		else if(j == 1)
 	        		{
-	        			users[i].password = row;
+	        			users[i].password = row;//In this if we would be writing the pass value of the user[i] to row
 	        		}
 	        		else if(j == 2)
 	        		{
-	        			users[i].Balance = Double.parseDouble(row);
+	        			users[i].Balance = Double.parseDouble(row);//Balance must be changed from double to string
+						//or we would be having some error because two data types are different
 	        		}
 	        		else if(j == 3)
 	        		{
@@ -186,7 +204,7 @@ public class atm extends JFrame {
 	        
 	        user_Number = i;
 	        
-	        _Reader2.close();
+	        _Reader2.close();//We should be closing file reading to avoid overloading to system
 	        
 	        JOptionPane.showMessageDialog(null, users[0].name_Surname+" "+users[1].name_Surname , "USERS" , JOptionPane.INFORMATION_MESSAGE);
 	        
@@ -279,9 +297,17 @@ public class atm extends JFrame {
 				String pass = new String( user_password.getPassword() );
 				int ok=0;
 				for(int i=0; i < user_Number; i++)
+					
+					)//Comparing account number and pass number
+					//if they are equal given values then it functions like a corrector
+					
+					
 				{
 					if( users[i].Account_Number.equals(ac_num) && users[i].password.equals(pass)  )
 					{
+					//In this case we are accessing informations of user because we could enter the account
+						
+						
 						data_password = users[i].password;
 						data_Balance = users[i].Balance;
 						data_Account_Number = users[i].Account_Number;
